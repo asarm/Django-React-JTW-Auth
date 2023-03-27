@@ -1,7 +1,10 @@
+import PrivateRoute from "./utilities/PrivateRoute";
+import {AuthProvider} from "./context/AuthContext";
+
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import Header from "./components/Header";
-import PrivateRoute from "./utilities/PrivateRoute";
+
 import {
   BrowserRouter as Router,
   Route,
@@ -12,6 +15,7 @@ function App() {
   return (
           <Router>
             <div className="App">
+              <AuthProvider>
               <Header />
               <Routes>
                 <Route exact path="/" element={<PrivateRoute />}>
@@ -19,6 +23,7 @@ function App() {
                 </Route>
                 <Route path="/login" element={<LoginPage />} />
               </Routes>
+              </AuthProvider>
             </div>
           </Router>
   );
